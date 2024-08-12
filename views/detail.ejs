@@ -1,0 +1,76 @@
+<div class="detail">Blog details</div>
+<div class="img_study">
+  <img src="../img/study.jpg" alt="">
+</div>
+
+<div class="detail_post">
+  <a href="https://www.facebook.com/li.dillyy"><img class="img-dilly" src="../img/img_dilly.jpg" alt=""></a>
+  <div class="content">
+    <div class="personal">
+      <p>created At: <%= data.createdAt.toDateString() %></p>
+    </div>
+    <h2><%= data.title %></h2>
+    <p><%= data.body %></p>
+  </div>
+</div>
+
+
+
+<div class="bd_cmt">
+  <div class="title_cmt">
+    <h3>Comments</h3>
+    <div class="line"></div>
+  </div>
+  <div class="comment">
+    <form  action="/detail/<%= data._id %>/comment" method="POST">
+      <textarea name="content" cols="20" class="textarea_cmt" rows="10" placeholder="Write a comment..."></textarea>
+      <input type="submit" class="btn" value="Publish">
+
+ 
+    </form>
+  </div>
+  <div class="comments-list">
+    <% comments.forEach(function(comment) { %>
+      <div class="comment-item" data-cmt-id="<%= comment._id %>">
+        <p><%= comment.content %></p>
+        <small>Posted on <%= comment.createdAt.toLocaleString() %></small>     
+       
+        <form action="/delete-comment/<%= comment._id  %>?_method=DELETE" method="POST" class="delete-comment-form">
+           <button type="submit" class="btn-delete-comment">
+            <i class="fa-solid fa-trash"></i>
+           </button>
+        </form>
+          
+      </div>
+    <% }) %>
+  </div>
+  
+  <div class="icon">
+
+    <div class="icon-tym">
+      <div data-post-id="<%= data._id %>" class="post">
+        <span class="like-count"><%= data.likes %></span>
+        <i class="fa-regular fa-heart like-heart"></i>
+      </div>
+    </div>
+    
+
+
+    
+    <div class="icon-cmt">
+      <div data-cmt-id="<%=data._id%>" class="cmt">
+        <span id="cmt-count"><%=data.commentCount%></span>
+        <i class="fa-solid fa-comment"></i>
+      </div>
+    </div>
+    
+
+    <div class="icon-eye" data-post-id="<%= data._id %>">
+      <span id="eye-count"><%= data.views %></span>
+      <i class="fa-regular fa-eye"></i>
+    </div>
+    
+  
+  </div>
+
+

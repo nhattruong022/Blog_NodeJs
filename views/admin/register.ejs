@@ -1,0 +1,16 @@
+<h3>Sign up</h3>
+
+<%if (errorMessage)  {%>
+  <div style="color: red; font-weight: 500; font-size: 15px;" class="error-message"><%= errorMessage %></div>
+  <%}  %>
+
+<form action="/register" method="POST" class="form-signin">
+  <label for="" class="username">Email:</label>
+  <input type="email" name="email" id="email" placeholder="Enter your email">
+  <label for="" class="username">Username:</label>
+  <input type="text" name="username" id="username" placeholder="Enter your username">
+  <label for="" class="password">Password:</label>
+  <input type="password" name="password" id="password" placeholder="Enter your password">
+  <div class="signup-link">Do you have an account ?  <a style="color: red;" href="/admin">Sign in</a></div>
+  <input type="submit" value="register" class="btn">
+</form>
